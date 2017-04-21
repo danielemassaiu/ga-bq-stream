@@ -69,6 +69,7 @@ def stream_data(dataset_name, table_name, json_data, time_stamp = time.time()):
     ## get the names of schema
     schema = table.schema
     schema_names = [o.name for o in schema]
+    #schema_names = [u'ts', u'ip']	
 
     logging.debug('BQ Schema: {}'.format(schema_names))
 
@@ -76,7 +77,7 @@ def stream_data(dataset_name, table_name, json_data, time_stamp = time.time()):
     rows = [(data[x] for x in schema_names)]
 
     # https://googlecloudplatform.github.io/google-cloud-python/stable/bigquery-table.html#google.cloud.bigquery.table.Table.insert_data
-    errors = table.insert_data(rows, row_ids = str(uuid.uuid4()))
+    errors = table.insert_data(rows)
 
     if not errors:
     	logging.debug('Loaded 1 row into {}:{}'.format(dataset_name, table_name))
