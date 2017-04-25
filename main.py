@@ -62,6 +62,5 @@ class BqHandler(webapp2.RequestHandler):
 
 
 app = webapp2.WSGIApplication([
-    ('/bq-streamer', MainHandler),
     ('/bq-task', BqHandler)
 ], debug=True)
