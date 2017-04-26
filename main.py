@@ -67,7 +67,7 @@ class BqHandler(webapp2.RequestHandler):
 
 		## get example.com/bq-task?bq=blah
 		b = self.request.get("bq")
-		ts = self.request.get("ts")
+		ts = str(time.time())
 
 		b = json.loads(b)
 
